@@ -10,3 +10,7 @@ djangorestframework-simplejwt
 redis
 celery
 python-slugify
+gunicorn
+whitenoise
+dj-database-url
+
