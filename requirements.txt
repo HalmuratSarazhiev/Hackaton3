@@ -1,4 +1,4 @@
-djangorestframework
+djangorestframework~=3.13.1
 python-decouple
 drf-yasg
 Pillow
@@ -11,6 +11,5 @@ redis
 celery
 python-slugify
 gunicorn
-whitenoise
+whitenoise~=6.2.0
 dj-database-url
-
