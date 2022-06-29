@@ -61,7 +61,7 @@ class User(AbstractBaseUser):
 
     def send_activation_code(self):
         message = f""" Thank you for registering in our site.
-                        Your link for activation is: http://localhost:8000/user/activate/{self.activation_code}/ """
+                        Your link for activation is: http://localhost:8000/account/activate/{self.activation_code}/ """
 
         send_mail(
             "Account Activation",
