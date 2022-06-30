@@ -49,6 +49,9 @@ INSTALLED_APPS = [
 
     # applications
     'apps.account',
+    'apps.category',
+    'apps.movie',
+    'apps.review',
 ]
 
 MIDDLEWARE = [
