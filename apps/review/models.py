@@ -22,3 +22,12 @@ class Like(models.Model):
 
     def __str__(self):
         return str(self.like)
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorite')
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='favorite')
+    favorite = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.like)

@@ -18,6 +18,7 @@ class MovieAdmin(admin.ModelAdmin):
 
     def image(self, obj):
         img = obj.images.first()
+        print(img)
         if img:
             return mark_safe(f"<img src='{img.image.url}' width ='80', height='80', style='object-fit: contain' />")
 
