@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Movie, MovieImage
+from .models import Movie, MovieImage, Favorite
 from apps.review.serializers import ReviewSerializer
 
 from ..review.models import Review
@@ -34,18 +34,20 @@ class MovieSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         rep = super(MovieSerializer, self).to_representation(instance)
         rep['images'] = MovieImageSerializer(MovieImage.objects.filter(movie=instance.id), many=True).data
-        rep['reviews'] = ReviewSerializer(instance.review.filter(product=instance.id), many=True).data
+        rep['reviews'] = ReviewSerializer(instance.review.filter(movie=instance.id), many=True).data
         total_rating = [i.rating for i in instance.review.all()]
         if len(total_rating) != 0:
             rep['tolal_rating'] = sum(total_rating)/len(total_rating)
         else:
             rep['total_rating'] = ""
-        rep['comments'] = ReviewSerializer(Review.objects.filter(product_id=instance), many=True).data
+        rep['reviews'] = ReviewSerializer(Review.objects.filter(movie_id=instance), many=True).data
         return  rep
 
+#     3 add new code 17:56 2 july
 
-
-
-
+class FavoriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favorite
+        fields = "__all__"
 
 

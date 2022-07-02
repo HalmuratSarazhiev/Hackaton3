@@ -14,14 +14,12 @@ class InLineMovieImage(admin.TabularInline):
 class MovieAdmin(admin.ModelAdmin):
     inlines = [InLineMovieImage,]
     list_display = ('title', 'image')
-    list_filter = ('genre',)
+    list_filter = ('category',)
 
     def image(self, obj):
         img = obj.images.first()
-        print(img)
         if img:
             return mark_safe(f"<img src='{img.image.url}' width ='80', height='80', style='object-fit: contain' />")
 
 
 admin.site.register(Movie, MovieAdmin)
-

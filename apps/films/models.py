@@ -9,7 +9,7 @@ class Movie(models.Model):
     title = models.CharField(max_length=80, verbose_name='Title')
     description = models.TextField(verbose_name='Description')
     year = models.IntegerField(verbose_name='Year')
-    genre = models.ForeignKey(Category,on_delete=models.CASCADE, max_length=80, verbose_name='Genre')
+    category = models.ForeignKey(Category,on_delete=models.CASCADE, max_length=80, verbose_name='Category')
 
     def __str__(self):
         return self.title
@@ -17,21 +17,11 @@ class Movie(models.Model):
 class MovieImage(models.Model):
     image = models.ImageField(upload_to='images')
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='images')
+# add favorite
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='fav')
+    review = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='fav')
+    favorite = models.BooleanField(default=False)
 
-
-# class Favorite(models.Model):
-#     class Meta:
-#         abstract = True
-#
-#     user = models.ForeignKey(User, verbose_name="Пользователь")
-#
-#     def __str__(self):
-#         return self.user.username
-#
-#
-#
-# class FavoriteMovie(Favorite):
-#     class Meta:
-#         db_table = "favorite_movies"
-#
-#     obj = models.ForeignKey(Movie, verbose_name="Статья")
+    def __str__(self):
+        return str(self.favorite)
