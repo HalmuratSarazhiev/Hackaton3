@@ -1,5 +1,4 @@
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter
+
 
 from .models import Category
 from .serializers import CategorySerializers
@@ -14,8 +13,6 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializers
     pagination_class = PageNumberPagination
-    filter_backends = [SearchFilter, DjangoFilterBackend]
-    search_fields = ['title', 'description']
 
     def get_serializer_context(self):
         return {"request": self.request}

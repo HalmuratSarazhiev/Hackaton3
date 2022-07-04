@@ -14,7 +14,7 @@ class InLineMovieImage(admin.TabularInline):
 class MovieAdmin(admin.ModelAdmin):
     inlines = [InLineMovieImage,]
     list_display = ('title', 'image')
-    list_filter = ('category',)
+    list_filter = ("category", 'year')
 
     def image(self, obj):
         img = obj.images.first()

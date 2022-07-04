@@ -2,6 +2,7 @@ from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.core.mail import send_mail
 from django.db import models
 from project.settings import EMAIL_HOST_USER
+from project.celery import app
 
 
 class UserManager(BaseUserManager):
@@ -58,14 +59,14 @@ class User(AbstractBaseUser):
         self.is_active = True
         self.activation_code = ""
         self.save()
-
-    def send_activation_code(self):
-        message = f""" Thank you for registering in our site.
-                        Your link for activation is: http://localhost:8000/account/activate/{self.activation_code}/ """
-
-        send_mail(
-            "Account Activation",
-            message,
-            EMAIL_HOST_USER,
-            [self.email],
-        )
+    # @app.task
+    # def send_activation_code(self):
+    #     message = f""" Thank you for registering in our site.
+    #                     Your link for activation is: http://localhost:8000/account/activate/{self.activation_code}/ """
+    #
+    #     send_mail(
+    #         "Account Activation",
+    #         message,
+    #         EMAIL_HOST_USER,
+    #         [self.email],
+    #     )

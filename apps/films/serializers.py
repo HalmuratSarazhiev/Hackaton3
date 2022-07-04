@@ -17,14 +17,17 @@ class MovieImageSerializer(serializers.ModelSerializer):
             if requests is not None:
                 url = requests.build_absolute_uri(url)
         else:
-            url = ""
+                url = ""
         return url
-
 
     def to_representation(self, instance):
         rep = super().to_representation(instance)
         rep['image'] = self._get_image_url(instance)
         return rep
+
+ # def to_representation(self, instance):
+ #        rep = super().to_representation(instance)
+ #        rep['images'] = FilmImageSerializer(FilmImage.objects.filter(film=instance.id), many=True).data
 
 class MovieSerializer(serializers.ModelSerializer):
     class Meta:

@@ -11,6 +11,7 @@ from .serializers import RegistrationSerializer, LoginSerializer, Changepassword
 User = get_user_model()
 
 
+
 class RegistrationView(APIView):
     def post(self, request):
         data = request.data
