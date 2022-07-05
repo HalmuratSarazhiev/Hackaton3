@@ -11,7 +11,7 @@ from .serializers import ReviewSerializer
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
-    # permission_classes = IsReviewAuthor
+    permission_classes = IsReviewAuthor
 
 
     def get_permissions(self):
@@ -33,5 +33,9 @@ class ReviewViewSet(viewsets.ModelViewSet):
         if not like_obj.like:
             status = 'unlike'
         return Response({'status': status})
+
+    def get_queryset(self):
+        queryset = Like.objects.filter(user=self.request.user)
+        return super().get_queryset()
 
 

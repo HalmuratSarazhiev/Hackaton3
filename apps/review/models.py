@@ -2,17 +2,17 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth import get_user_model
 
-from apps.movie.models import User, Movie
+from apps.films.models import User, Movie
 
 
 class Review(models.Model):
     user = models.ForeignKey(User, related_name='review', on_delete=models.SET_NULL, null=True)
-    product = models.ForeignKey(Movie, related_name='review', on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, related_name='review', on_delete=models.CASCADE)
     review = models.TextField()
     rating = models.IntegerField(default=1, validators=[MaxValueValidator(10), MinValueValidator(1)])
 
     def __str__(self):
-        return str(self.product.title)
+        return str(self.movie.title)
 
 
 class Like(models.Model):
@@ -22,3 +22,5 @@ class Like(models.Model):
 
     def __str__(self):
         return str(self.like)
+
+
