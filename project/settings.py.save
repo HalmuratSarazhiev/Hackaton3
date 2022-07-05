@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['34.107.122.155', 'localhost','hackaton.lekar.kg']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     # libs
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders',
+    "corsheaders",
     'drf_yasg',
     'django_filters',
 
@@ -138,8 +138,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'staticfiles/'
+STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 
 # Default primary key field type
@@ -157,6 +160,9 @@ EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
+CORS_ALLOWED_ORIGINS = [
+    '*Э
+]
 CORS_ALLOW_METHODS = [
     "DELETE",
     "GET",

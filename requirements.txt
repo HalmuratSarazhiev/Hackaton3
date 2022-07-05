@@ -11,6 +11,5 @@ redis
 celery
 python-slugify
 gunicorn
-whitenoise~=6.2.0
 dj-database-url
 django-cors-headers

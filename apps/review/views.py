@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .models import Review, Like
-# from .permissions import IsReviewAuthor
+from .permissions import IsReviewAuthor
 from .serializers import ReviewSerializer
 
 

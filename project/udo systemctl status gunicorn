@@ -1,0 +1,10 @@
+[0;1;31m●[0m gunicorn.service - gunicorn daemon
+   Loaded: loaded (/etc/systemd/system/gunicorn.service; disabled; vendor preset: enabled)
+   Active: [0;1;31mfailed[0m (Result: exit-code) since Fri 2022-07-01 07:39:08 UTC; 15min ago
+ Main PID: 1006 (code=exited, status=203/EXEC)
+
+Jul 01 07:39:08 hackaton3 systemd[1]: Started gunicorn daemon.
+Jul 01 07:39:08 hackaton3 systemd[1006]: [0;1;31m[0;1;39m[0;1;31mgunicorn.service: Failed to execute command: No such file or directory[0m
+Jul 01 07:39:08 hackaton3 systemd[1006]: [0;1;31m[0;1;39m[0;1;31mgunicorn.service: Failed at step EXEC spawning /home/khalmurat_sarazhiev/Hackaton3/venv/bin/gunicorn: No such file or directory[0m
+Jul 01 07:39:08 hackaton3 systemd[1]: [0;1;39m[0;1;31m[0;1;39mgunicorn.service: Main process exited, code=exited, status=203/EXEC[0m
+Jul 01 07:39:08 hackaton3 systemd[1]: [0;1;39m[0;1;31m[0;1;39mgunicorn.service: Failed with result 'exit-code'.[0m

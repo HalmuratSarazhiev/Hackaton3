@@ -33,8 +33,8 @@ class MovieSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         rep = super(MovieSerializer, self).to_representation(instance)
-        rep['images'] = MovieImageSerializer(MovieImage.objects.filter(product=instance.id), many=True).data
-        rep['reviews'] = ReviewSerializer(instance.review.filter(product=instance.id), many=True).data
+        rep['images'] = MovieImageSerializer(MovieImage.objects.filter(movie=instance.id), many=True).data
+        rep['reviews'] = ReviewSerializer(instance.review.filter(product_id=instance.id), many=True).data
         total_rating = [i.rating for i in instance.review.all()]
         if len(total_rating) != 0:
             rep['tolal_rating'] = sum(total_rating)/len(total_rating)
