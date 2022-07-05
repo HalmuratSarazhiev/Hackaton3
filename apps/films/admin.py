@@ -20,6 +20,9 @@ class MovieAdmin(admin.ModelAdmin):
         img = obj.images.first()
         if img:
             return mark_safe(f"<img src='{img.image.url}' width ='80', height='80', style='object-fit: contain' />")
+        else:
+            return ""
+
 
 
 admin.site.register(Movie, MovieAdmin)
